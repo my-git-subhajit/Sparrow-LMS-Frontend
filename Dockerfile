@@ -12,7 +12,7 @@ RUN npm install --force
 RUN npm install -g @angular/cli
 
 # Copy the bash script to the Docker image
-COPY modify_quill_editor.sh /app/modify_quill_editor.sh
+COPY modify_quill_editor.sh ./
 
 # Execute the bash script to modify the quill-editor.component.d.ts file
 RUN chmod +x /app/modify_quill_editor.sh && /app/modify_quill_editor.sh
@@ -32,4 +32,4 @@ COPY --from=build /app/dist/lms-front-ang /usr/share/nginx/html
 EXPOSE 80
 
 # Start the web server
-CMD ["nginx", "-g", "daemon off;"]
+CMD [ "nginx", "-g", "daemon off;" ]
